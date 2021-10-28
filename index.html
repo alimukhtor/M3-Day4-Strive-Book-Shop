@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<button type="button" name="button" onclick="loadUser()">ali</button>
+
+  <div class="row">
+
+  </div>
+
+
+
+
+    <script>
+      let loadUser = () => {
+        fetch('https://striveschool-api.herokuapp.com/books')
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          let getBody = document.querySelector(".row");
+          // console.log(data)
+          let allInOne = data.map(element => `${element.title}`)
+          console.log(allInOne);
+          getBody.innerHTML = allInOne
+        });
+      }
+
+
+    </script>
+  </body>
+</html>
