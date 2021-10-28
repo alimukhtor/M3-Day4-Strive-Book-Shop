@@ -9,6 +9,9 @@
       body{
         background-color: #008080;
       }
+      .form-control{
+        cursor:pointer;
+      }
       .card-img-top {
         object-fit: cover;
       }
@@ -18,7 +21,7 @@
 <!-- <button type="button" name="button" onclick="loadUser()">Click</button> -->
 
   <div class="container">
-    <h1 class="text-center">Strive book shop </h1>
+    <h1 class="text-center"><strong>Strive book shop</strong> </h1>
     <div class="nav my-5">
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -60,15 +63,19 @@
 
 
           `)
-          data.forEach(element => element)
           getBody.innerHTML = allInOne
+          data.forEach(element => element)
           let getBtn1 = getBody.querySelectorAll(".btn-success")
           for(let i = 0; i < getBtn1.length; i++){
             const currentBtn1 = getBtn1[i]
             // let newArr = []
             currentBtn1.onclick = function (event) {
-              let selectedCard = getBody.closest(".card");
-              selectedCard.classList.add(".bg-secondary")
+              console.log(event.currentTarget);
+              // let selectedCard = getBody.closest(".card");
+  
+              event.currentTarget.closest(".card").classList.add("bg-secondary");
+
+              // getCard.classList.toggle(".bg-secondary")
             };
           }
           let getBtn2 = getBody.querySelectorAll(".btn-info")
