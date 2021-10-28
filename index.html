@@ -13,7 +13,7 @@
         cursor:pointer;
       }
       .card-img-top {
-        object-fit: cover;
+        /* object-fit: cover; */
       }
     </style>
   </head>
@@ -46,9 +46,9 @@
           let getBody = document.querySelector(".row");
           // console.log(data)
           let allInOne = data.map(element => `
-          <div class="col-2">
+          <div class="col-md-2">
             <div class="card">
-              <img src="${element.img}" class="card-img-top" alt="...">
+              <img src="${element.img}" class="card-img-top img-fluid" alt="...">
               <div class="card-body">
                 <h5 class="card-title">${element.title}</h5>
                 <div class="btns d-flex flex-row">
@@ -68,14 +68,10 @@
           let getBtn1 = getBody.querySelectorAll(".btn-success")
           for(let i = 0; i < getBtn1.length; i++){
             const currentBtn1 = getBtn1[i]
-            // let newArr = []
+            let newArr = []
             currentBtn1.onclick = function (event) {
               console.log(event.currentTarget);
-              // let selectedCard = getBody.closest(".card");
-  
-              event.currentTarget.closest(".card").classList.add("bg-secondary");
-
-              // getCard.classList.toggle(".bg-secondary")
+              newArr.push(event.currentTarget.closest(".card").classList.add("bg-secondary"));
             };
           }
           let getBtn2 = getBody.querySelectorAll(".btn-info")
