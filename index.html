@@ -5,14 +5,16 @@
     <title></title>
   </head>
   <body>
-<button type="button" name="button" onclick="loadUser()">ali</button>
+<button type="button" name="button" onclick="loadUser()">Click</button>
 
-  <div class="row">
+  <div class="container">
+      <div class="row">
 
+      </div>
   </div>
 
 
-
+<!-- ${element} -->
 
     <script>
       let loadUser = () => {
@@ -23,8 +25,24 @@
         .then(data => {
           let getBody = document.querySelector(".row");
           // console.log(data)
-          let allInOne = data.map(element => `${element.title}`)
-          console.log(allInOne);
+          let allInOne = data.map(element => `
+          <div class="col-3">
+            <div class="card" style="width: 18rem;">
+              <img src="${element.img}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">${element.title}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <button type="button" class="btn btn-success">add to card</button>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          `)
+          data.forEach(element => console.log(element))
+
           getBody.innerHTML = allInOne
         });
       }
