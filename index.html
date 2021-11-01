@@ -18,101 +18,25 @@
     </style>
   </head>
   <body>
-<!-- <button type="button" name="button" onclick="loadUser()">Click</button> -->
 
   <div class="container">
     <h1 class="text-center"><strong>Strive book shop</strong> </h1>
     <div class="nav my-5">
-      <form class="form-inline my-2 my-lg-0">
+      <form class="form-inline">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
 
     </div>
-    <div class="container">
       <div class="row">
 
       </div>
 
-    </div>
   </div>
 
 
 
-    <script>
-      let loadUser = () => {
-        fetch('https://striveschool-api.herokuapp.com/books')
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          let getBody = document.querySelector(".row");
-          // console.log(data)
-          let allInOne = data.map(element => `
-            <div class="card col-12 col-md-4 col-lg-3 my-3 mx-3">
-              <img src="${element.img}" class="card-img-top img-fluid w-100" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">${element.title}</h5>
-                <div class="btns d-flex flex-row">
-                <button type="button" class="btn btn-success">Add</button>
-                <button type="button" class="mx-2 btn btn-info">Skip</button>
-              </div>
-              </div>
-            </div>
-
-
-
-
-          `)
-          getBody.innerHTML = allInOne
-          data.forEach(element => element)
-          let getBtn1 = getBody.querySelectorAll(".btn-success")
-          for(let i = 0; i < getBtn1.length; i++){
-            const currentBtn1 = getBtn1[i]
-            let newArr = []
-            currentBtn1.onclick = function (event) {
-              console.log(event.currentTarget);
-              newArr.push(event.currentTarget.closest(".card").classList.add("bg-secondary"));
-            };
-          }
-          let getBtn2 = getBody.querySelectorAll(".btn-info")
-          for(let i = 0; i < getBtn2.length; i++){
-            const currentBtn2 = getBtn2[i]
-            currentBtn2.onclick = function (event) {
-              event.currentTarget.closest(".card").remove();
-
-            };
-          }
-
-        });
-      }
-
-
-//       .then(input => {
-//
-//     let inputField = document.getElementById("input");
-//     let inputValue = inputField.value;
-//     let arraySearch = []
-//
-//     fetch("https://striveschool-api.herokuapp.com/books")
-//         .then(resp => resp.json())
-//         .then(books => {
-//             books.forEach(element => {
-//                 inputField.addEventListener("keypress", function(e) {
-//
-//                     let lettersFromTitleArray = element.title
-//                     arraySearch.push(e.key)
-//                     let letterToString = arraySearch.join("")
-//                     if (letterToString.length > 3) {
-//                         books.filter(e => { e.substr(0, 3) }, letterToString)
-//                     }
-//                 })
-//             })
-//         })
-// })
-
-      loadUser()
-    </script>
+    <script src="script.js"></script>
 
 
 
