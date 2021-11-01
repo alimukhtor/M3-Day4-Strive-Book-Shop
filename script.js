@@ -1,12 +1,12 @@
-let loadUser = () => {
-  fetch('https://striveschool-api.herokuapp.com/books')
-  .then(response => {
-    return response.json()
-  })
-  .then(data => {
-    let getBody = document.querySelector(".row");
-    // console.log(data)
-    let allInOne = data.forEach(element => getBody.innerHTML += `
+  let loadUser=()=> {
+    fetch('https://striveschool-api.herokuapp.com/books')
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      let getBody = document.querySelector(".row");
+      // console.log(data)
+      let allInOne = data.forEach(element => getBody.innerHTML += `
       <div class="card col-12 col-md-4 col-lg-3 my-3 mx-3">
         <img src="${element.img}" class="card-img-top img-fluid w-100" alt="...">
         <div class="card-body">
@@ -25,6 +25,8 @@ let loadUser = () => {
 
 
     `)
+
+
     let getBtn1 = getBody.querySelectorAll(".btn-success")
     for(let i = 0; i < getBtn1.length; i++){
       const currentBtn1 = getBtn1[i]
@@ -46,3 +48,16 @@ let loadUser = () => {
   });
 }
 loadUser()
+
+let filterBooks = function(){
+  fetch('https://striveschool-api.herokuapp.com/books')
+  .then(response => {
+    return response.json()
+  })
+  .then(data => {
+  let getBody1 = document.querySelector(".row");
+  const selectLowerPrice = data.filter(el => el.price > 10)
+  console.log(selectLowerPrice);
+  getBody1.innerHTML += selectLowerPrice
+  })
+}
